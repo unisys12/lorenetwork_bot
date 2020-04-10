@@ -1,0 +1,19 @@
+{
+  "name": "lorenetwork_bot",
+  "version": "0.0.1",
+  "description": "A bot for The Lore Network",
+  "main": "index.js",
+  "scripts": {
+    "test": "n/a"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unisys12/lorenetwork_bot.git"
+  },
+  "author": "unisys12",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unisys12/lorenetwork_bot/issues"
+  },
+  "homepage": "https://github.com/unisys12/lorenetwork_bot#readme"
+}
