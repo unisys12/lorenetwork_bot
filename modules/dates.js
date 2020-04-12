@@ -1,9 +1,8 @@
-const dates = require('../modules/dates.js');
+let date = new Date;
 
-describe('currentMonth function', () => {
-    test('it should return a string of the current month', () => {
-        const monthInt = 3;
-
+module.exports = {
+    currentMonth: function () {
+        let month = date.getMonth();
         const months = [
             "January",
             "February",
@@ -17,9 +16,7 @@ describe('currentMonth function', () => {
             "October",
             "November",
             "December"
-        ];
-
-        expect(dates.currentMonth()).toBe(months[monthInt]);
-
-    })
-})
+        ]
+        return months[month]
+    }
+}
