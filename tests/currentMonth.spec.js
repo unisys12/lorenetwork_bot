@@ -2,7 +2,8 @@ const dates = require('../modules/dates.js');
 
 describe('currentMonth function', () => {
     test('it should return a string of the current month', () => {
-        const monthInt = 3;
+        let date = new Date;
+        let thisMonth = date.getMonth();
 
         const months = [
             "January",
@@ -19,7 +20,15 @@ describe('currentMonth function', () => {
             "December"
         ];
 
-        expect(dates.currentMonth()).toBe(months[monthInt]);
+        expect(dates.currentMonth()).toBe(months[thisMonth]);
 
+    })
+})
+
+describe('translateEsMonth function', () => {
+    test('it should return a string that represents the current month of the year, based on the naming found in the world of Tamerial', () => {
+        let testMonth = 3;
+
+        expect(dates.esMonths(testMonth)).toBe("Rain's Hand");
     })
 })
