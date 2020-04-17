@@ -23,24 +23,43 @@ module.exports = {
 
 gatherLore = (rows) => {
 
-    let dailies = []
+    let lore = []
 
-    rows.forEach(r => {
-        if (getMonthlyActivities(r)) {
-            matching_activities.push(r);
+    rows.forEach(row => {
+        if (getMonthlyActivities(row)) {
+            matching_activities.push(row);
         }
     });
 
     matching_activities.filter(activity => {
         if (activity[2] == date.getDay()) {
-            dailies.push(activity);
+            lore.push(activity);
         }
     })
 
-    return dailies;
+    if(lore.length < 1) {
+        return getRandomLore(rows);
+    } else {
+        return lore;
+    }
 
 }
 
 getMonthlyActivities = (row) => {
     return row[1] == dates.esMonths(date.getMonth());
+}
+
+getRandomLore = (rows) => {
+    let random = [];
+    rows.forEach(row => {
+        if (row[1] || row[2] === "") {
+            random.push(row);
+        }
+    });
+
+    if (random.length > 0) {
+        return random;
+    } else {
+        console.log(`There was a issue gathering random lore`);
+    }
 }
