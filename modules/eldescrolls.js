@@ -32,7 +32,7 @@ gatherLore = (rows) => {
     });
 
     matching_activities.filter(activity => {
-        if (activity[2] == date.getDay()) {
+        if (activity[2] == date.getDate()) {
             lore.push(activity);
         }
     })
