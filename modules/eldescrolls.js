@@ -1,6 +1,8 @@
 const dates = require('../modules/dates');
 const { google } = require("googleapis");
 const sheet = google.sheets("v4");
+const htmlFormat = require('./htmlFormt');
+
 const date = new Date();
 let matching_activities = [];
 
@@ -39,14 +41,21 @@ gatherLore = (rows) => {
 
     if(lore.length < 1) {
         return getRandomLore(rows);
+    } else if (lore.length > 1){
+        let index = pickRandom(lore);
+        return htmlFormat.getLore(lore[index]);
     } else {
-        return lore;
+        return htmlFormat.getLore(lore);
     }
 
 }
 
 getMonthlyActivities = (row) => {
     return row[1] == dates.esMonths(date.getMonth());
+}
+
+pickRandom = (data) => {
+    return [Math.round(Math.random() * (data.length - 1))];
 }
 
 getRandomLore = (rows) => {
@@ -58,7 +67,8 @@ getRandomLore = (rows) => {
     });
 
     if (random.length > 0) {
-        return random;
+        let index = pickRandom(random)
+        htmlFormat.getLore(random[index]);
     } else {
         console.log(`There was a issue gathering random lore`);
     }
